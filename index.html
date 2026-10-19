@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PDF资料合集</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;}
+body{background:#f7f8fa;color:#2d3748;max-width:1020px;margin:3rem auto;padding:0 1rem;}
+header{margin-bottom:2rem;text-align:center;}
+h1{font-size:1.8rem;font-weight:600;margin-bottom:0.5rem;}
+.desc{color:#6b7280;margin-bottom:1.5rem;}
+.search-box{width:100%;padding:0.8rem 1rem;border:1px solid #d2d6dc;border-radius:8px;font-size:1rem;margin-bottom:2rem;}
+.file-grid{display:grid;grid-template-columns:repeat(auto-fill, minmax(280px,1fr));gap:1rem;}
+.card{background:#fff;border:1px solid #e5e7eb;border-radius:10px;padding:1rem;transition:0.2s;}
+.card:hover{box-shadow:0 4px 12px rgba(0,0,0,0.08);border-color:#cbd5e0;}
+.card-title{font-weight:500;margin-bottom:0.8rem;word-break:break-all;}
+.btn-group{display:flex;gap:0.6rem;}
+a.btn{padding:0.5rem 0.9rem;border-radius:6px;text-decoration:none;font-size:0.9rem;text-align:center;flex:1;}
+.btn-preview{background:#edf2f7;color:#2b6cb0;}
+.btn-download{background:#2b6cb0;color:#fff;}
+footer{margin-top:3rem;text-align:center;color:#9ca3af;font-size:0.9rem;padding-bottom:2rem;}
+</style>
+</head>
+<body>
+<header>
+    <h1>PDF资料合集</h1>
+    <p class="desc">点击预览在线查看，下载按钮保存文件；可在搜索框快速筛选文档</p>
+    <input class="search-box" id="searchInput" placeholder="🔍 输入文档名称搜索...">
+</header>
+
+<div class="file-grid" id="fileList">
+    <!-- ============在这里批量添加你的50条PDF条目============ -->
+    <div class="card" data-name="1.火干扰下油松林植物-凋落物-土壤碳氮磷化学计量特征及养分利用策略_袁志颖">
+        <div class="card-title">1.火干扰下油松林植物-凋落物-土壤碳氮磷化学计量特征及养分利用策略_袁志颖.pdf</div>
+        <div class="btn-group">
+            <a class="btn btn-preview" href="1.火干扰下油松林植物-凋落物-土壤碳氮磷化学计量特征及养分利用策略_袁志颖.pdf" target="_blank">预览</a>
+            <a class="btn btn-download" href="1.火干扰下油松林植物-凋落物-土壤碳氮磷化学计量特征及养分利用策略_袁志颖.pdf" download>下载</a>
+        </div>
+    </div>
+    <div class="card" data-name="2.林火防护林研究——基于自然解决方案的林火管控_朱教君">
+        <div class="card-title">2.林火防护林研究——基于自然解决方案的林火管控_朱教君.pdf</div>
+        <div class="btn-group">
+            <a class="btn btn-preview" href="2.林火防护林研究——基于自然解决方案的林火管控_朱教君.pdf" target="_blank">预览</a>
+            <a class="btn btn-download" href="2.林火防护林研究——基于自然解决方案的林火管控_朱教君.pdf" download>下载</a>
+        </div>
+    </div>
+    <!-- 复制上面这整块<div class="card">...</div>，继续加到50个，修改两处：
+    1. data-name="文档名称" （用于搜索）
+    2. href="文件名.pdf" 和 card-title里的文件名，必须和仓库里PDF完全一致！ -->
+</div>
+
+<footer>
+<p>本资料托管于 GitHub Pages；删除仓库内PDF文件后，对应文档将无法访问</p>
+</footer>
+
+<script>
+// 搜索筛选功能
+const input = document.getElementById('searchInput');
+const cards = document.querySelectorAll('.card');
+input.addEventListener('input', function(){
+    const kw = this.value.toLowerCase();
+    cards.forEach(card=>{
+        const name = card.dataset.name.toLowerCase();
+        card.style.display = name.includes(kw) ? '' : 'none';
+    })
+})
+</script>
+</body>
+</html>
